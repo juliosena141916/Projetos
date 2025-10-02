@@ -1,11 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Bomba Gym - Cadastro</title>
+    <link rel="stylesheet" href="paginaCadastro.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    
+    <div class="container">
+        <div class="form-box">
+            <img class="logo" src="Logo.png" height="190">
+            <form>
+                <div class="input-box">
+                    <span class="material-icons">person</span>
+                    <input type="text" placeholder="Usuário" required>
+                </div>
+
+                <div class="input-box">
+                    <span class="material-icons">lock</span>
+                    <input type="password" placeholder="Senha" required>
+                </div>
+
+                <div class="input-box">
+                    <span class="material-icons">lock</span>
+                    <input type="password" placeholder="Confirmar senha" required>
+                </div>
+
+                <div class="input-box">
+                    <span class="material-icons">email</span>
+                    <input type="email" placeholder="Email" required>
+                </div>
+
+                <button type="submit" class="btn">Cadastrar</button>
+            </form>
+
+            <div class="links">
+                <a href="paginaLogin.html">Fazer Login</a> |
+                <a href="paginaInicial.html">Página Inicial</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

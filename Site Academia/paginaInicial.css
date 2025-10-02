@@ -1,0 +1,11 @@
+.top {
+    display: flex;
+    align-items: center;
+    background: #d4d4d4;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    position: relative;
+    bottom: 30px;
+}

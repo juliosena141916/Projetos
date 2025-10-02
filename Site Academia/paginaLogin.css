@@ -1,0 +1,110 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("FundoAcademia.png") no-repeat center center/cover;
+}
+
+/* Fundo transparente */
+.container {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Caixa do formulário */
+.form-box {
+    background: rgb(229, 229, 229); /* fundo translúcido */
+    padding: 30px;
+    height: 500px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+
+    /* "borda translúcida" fake */
+    outline: 35px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.logo { 
+    position: relative;
+    bottom: 20px;
+}
+
+/* Inputs */
+.input-box {
+    display: flex;
+    align-items: center;
+    background: #d4d4d4;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    position: relative;
+    bottom: 30px;
+}
+
+.input-box span {
+    color: #c70000;
+    margin-right: 8px;
+}
+
+.input-box input {
+    border: none;
+    outline: none;
+    background: none;
+    width: 100%;
+    font-size: 16px;
+    
+}
+
+/* Botão */
+.btn {
+    background: #c70000;
+    color: #fff;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    bottom: 20px;
+}
+
+.btn:hover {
+    background: #a00000;
+}
+
+/* Links */
+.links {
+    margin-top: 15px;
+    position: relative;
+    bottom: 10px;
+}
+
+.links a {
+    color: #c70000;
+    text-decoration: none;
+    margin: 0 5px;
+    font-size: 14px;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
