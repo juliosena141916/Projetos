@@ -1,13 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" src="paginaInicial.css">
+    <link rel="stylesheet" href="paginaInicial.css">
     <title>Bomba Gym</title>
 </head>
 <body>
-    <header class="Top">
+    <header>
+        <div id="cabecalho1">
+            <button id="menu">
+                <img src="menu.png" alt="Menu">
+            </button>
+
+            <nav id="menu-opcoes">
+                <a href="#"><img src="contato.png" alt=""> Contato</a>
+            </nav>
+
+            <div id="botoes">
+                <a href="paginaLogin.html">
+                    <button class="btn" id="btn-login">
+                        <img src="img_conta.png" alt="" class="icone"> Login
+                    </button>
+                </a>
+                <a href="paginaCadastro.html">
+                    <button class="btn" id="btn-cadastro">
+                        <img src="img_conta.png" alt="" class="icone"> Cadastro
+                    </button>
+                </a>
+            </div>
+        </div>
     </header>
+
+    <script>
+        const botaoMenu = document.getElementById('menu');
+        const menuOpcoes = document.getElementById('menu-opcoes');
+
+        botaoMenu.addEventListener('click', () => {
+            menuOpcoes.classList.toggle('ativo');
+        });
+    </script>
 </body>
 </html>
