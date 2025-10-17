@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Aluno</title>
+    <title>Login - Administração</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -83,42 +83,28 @@
             border-radius: 4px;
             display: none;
         }
-        .links {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .links a {
-            color: #007bff;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        .links a:hover {
-            text-decoration: underline;
-        }
-        .admin-link {
+        .back-link {
             text-align: center;
             margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #ddd;
         }
-        .admin-link a {
-            color: #6c757d;
+        .back-link a {
+            color: #007bff;
             text-decoration: none;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <h2>Login do Aluno</h2>
-        <form id="loginForm" action="paginaLogin.php" method="POST">
+        <h2>Área Administrativa</h2>
+        <form id="loginForm" action="login_admin.php" method="POST">
             <div class="form-group">
-                <label for="usuario">Usuário ou E-mail:</label>
-                <input type="text" id="usuario" name="usuario" placeholder="Digite seu usuário ou e-mail" required>
+                <label for="usuario">Usuário:</label>
+                <input type="text" id="usuario" name="usuario" required>
             </div>
             
             <div class="form-group">
                 <label for="senha">Senha:</label>
-                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+                <input type="password" id="senha" name="senha" required>
             </div>
             
             <button type="submit">Entrar</button>
@@ -127,10 +113,10 @@
             <div class="success" id="successMessage"></div>
         </form>
         
-        <div class="links">
-            <a href="paginaCadastro.html">Criar conta</a>
-            <a href="#">Esqueci a senha</a>
+        <div class="back-link">
+            <a href="paginaInicial.html">← Voltar para o site</a>
         </div>
+    </div>
 
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(e) {
@@ -163,16 +149,13 @@
             successDiv.style.display = 'block';
         }
 
-        // Mostrar mensagens da URL
+        // Mostrar mensagem de URL (se houver)
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.has('success')) {
-            showSuccess('Cadastro realizado com sucesso! Faça login para continuar.');
+            showSuccess('Operação realizada com sucesso!');
         }
         if (urlParams.has('error')) {
             showError(urlParams.get('error'));
-        }
-        if (urlParams.has('logout')) {
-            showSuccess('Logout realizado com sucesso!');
         }
     </script>
 </body>
