@@ -1,0 +1,107 @@
+/**
+ * TechFit - Variáveis CSS Globais
+ * Cores, fontes, espaçamentos e animações
+ */
+
+:root {
+  /* Cores principais */
+  --color-primary: #ff4444;
+  --color-primary-dark: #b22222;
+  --color-primary-light: #ff6b6b;
+  --color-primary-alpha: rgba(255, 68, 68, 0.1);
+  --color-primary-alpha-2: rgba(255, 68, 68, 0.2);
+  --color-primary-alpha-3: rgba(255, 68, 68, 0.3);
+  --color-primary-alpha-4: rgba(255, 68, 68, 0.4);
+  --color-primary-alpha-5: rgba(255, 68, 68, 0.5);
+
+  /* Cores de fundo */
+  --color-bg-dark: #0d0d0d;
+  --color-bg-medium: #1a1a1a;
+  --color-bg-light: rgba(25, 25, 25, 0.95);
+  --color-bg-card: rgba(40, 40, 40, 0.5);
+  --color-bg-card-hover: rgba(40, 40, 40, 0.7);
+  --color-bg-input: rgba(40, 40, 40, 0.9);
+  --color-bg-input-focus: rgba(50, 50, 50, 0.95);
+
+  /* Cores de texto */
+  --color-text-white: #fff;
+  --color-text-light: #bbb;
+  --color-text-muted: #888;
+  --color-text-dark: #555;
+
+  /* Cores de status */
+  --color-success: #51cf66;
+  --color-error: #ff6b6b;
+  --color-warning: #ffa500;
+
+  /* Bordas */
+  --color-border: #333;
+  --color-border-light: rgba(255, 255, 255, 0.05);
+
+  /* Sombras */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.5);
+  --shadow-primary: 0 4px 15px rgba(255, 68, 68, 0.3);
+  --shadow-primary-lg: 0 8px 30px rgba(255, 68, 68, 0.4);
+  --shadow-glow: 0 0 30px rgba(220, 20, 60, 0.25);
+
+  /* Tipografia */
+  --font-family: 'Poppins', sans-serif;
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 28px;
+  --font-size-4xl: 32px;
+  --font-size-5xl: 42px;
+
+  /* Font weights */
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  /* Espaçamentos */
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 15px;
+  --spacing-lg: 20px;
+  --spacing-xl: 25px;
+  --spacing-2xl: 30px;
+  --spacing-3xl: 40px;
+
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-full: 50%;
+
+  /* Transições */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Z-index */
+  --z-dropdown: 1000;
+  --z-modal: 2000;
+
+  /* Layout */
+  --container-max-width: 1200px;
+  --header-padding: 20px;
+}
+
+/* Gradientes */
+.gradient-primary {
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+}
+
+.gradient-bg {
+  background: radial-gradient(circle at center, var(--color-bg-medium) 0%, var(--color-bg-dark) 100%);
+}
+

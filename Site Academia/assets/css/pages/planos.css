@@ -1,0 +1,214 @@
+/**
+ * TechFit - Página de Planos
+ * Estilos específicos para a página de planos
+ */
+
+/* Plans Grid */
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacing-2xl);
+  margin-top: var(--spacing-3xl);
+}
+
+/* Plan Card */
+.plan-card {
+  background: var(--color-bg-light);
+  border: 2px solid var(--color-primary-alpha-2);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-3xl) var(--spacing-2xl);
+  transition: var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.6s ease;
+}
+
+.plan-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.plan-card:nth-child(2) {
+  animation-delay: 0.2s;
+  border-color: var(--color-primary-alpha-4);
+}
+
+.plan-card:nth-child(3) {
+  animation-delay: 0.3s;
+  border-color: var(--color-primary);
+  background: rgba(255, 68, 68, 0.05);
+}
+
+.plan-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--color-primary-alpha), transparent);
+  transition: left var(--transition-slow);
+}
+
+.plan-card:hover::before {
+  left: 100%;
+}
+
+.plan-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-primary-lg);
+}
+
+/* Plan Badge */
+.plan-badge {
+  position: absolute;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+  color: var(--color-text-white);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-xl);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Plan Name */
+.plan-name {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.plan-description {
+  color: var(--color-text-light);
+  font-size: var(--font-size-base);
+  margin-bottom: var(--spacing-2xl);
+}
+
+/* Plan Price */
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-2xl);
+  padding-bottom: var(--spacing-2xl);
+  border-bottom: 2px solid var(--color-primary-alpha-2);
+}
+
+.plan-price-label {
+  font-size: var(--font-size-md);
+  color: var(--color-text-light);
+}
+
+.plan-price-value {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-bold);
+  color: var(--color-primary);
+}
+
+.plan-price-period {
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
+}
+
+/* Plan Benefits */
+.plan-benefits {
+  flex: 1;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.plan-benefits-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-white);
+  margin-bottom: var(--spacing-lg);
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-base);
+  color: var(--color-text-light);
+}
+
+.benefit-item i {
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
+  min-width: 20px;
+}
+
+.benefit-item.included {
+  color: var(--color-text-white);
+}
+
+.benefit-item.not-included {
+  color: var(--color-text-dark);
+}
+
+.benefit-item.not-included i {
+  color: var(--color-text-dark);
+}
+
+/* Plan Button */
+.plan-button {
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+  color: var(--color-text-white);
+  border: none;
+  padding: var(--spacing-md) var(--spacing-2xl);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-semibold);
+  cursor: pointer;
+  transition: var(--transition-base);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.plan-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--color-primary-alpha-4);
+}
+
+.plan-button:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .plans-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .plan-card {
+    padding: var(--spacing-2xl) var(--spacing-xl);
+  }
+
+  .plan-price-value {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .plan-card {
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+
+  .plan-name {
+    font-size: var(--font-size-2xl);
+  }
+
+  .plan-price-value {
+    font-size: var(--font-size-4xl);
+  }
+}
+

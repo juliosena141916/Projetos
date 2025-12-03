@@ -1,0 +1,230 @@
+/**
+ * TechFit - Página de Cursos
+ * Estilos específicos para a página de cursos
+ */
+
+/* Category Section */
+.category-section {
+  margin-bottom: 60px;
+  animation: slideUp 0.6s ease;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-2xl);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--color-primary-alpha-3);
+}
+
+.category-header i {
+  font-size: var(--font-size-4xl);
+  color: var(--color-primary);
+}
+
+.category-header h2 {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-white);
+  margin: 0;
+}
+
+/* Courses Grid */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--spacing-2xl);
+}
+
+/* Course Card */
+.course-card {
+  background: var(--color-bg-light);
+  border: 2px solid var(--color-primary-alpha-2);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-2xl);
+  transition: var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+}
+
+.course-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--color-primary-alpha), transparent);
+  transition: left var(--transition-slow);
+}
+
+.course-card:hover::before {
+  left: 100%;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-primary-lg);
+}
+
+.course-name {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-semibold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.course-name i {
+  font-size: var(--font-size-xl);
+}
+
+.course-description {
+  color: var(--color-text-light);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-lg);
+  flex: 1;
+}
+
+.course-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.course-info-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--color-text-light);
+  font-size: var(--font-size-sm);
+}
+
+.course-info-item i {
+  font-size: var(--font-size-md);
+  color: var(--color-primary);
+  min-width: 20px;
+}
+
+.course-price {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-sm);
+  margin-top: auto;
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-primary-alpha-2);
+}
+
+.course-price-label {
+  font-size: var(--font-size-base);
+  color: var(--color-text-light);
+}
+
+.course-price-value {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-bold);
+  color: var(--color-primary);
+}
+
+.course-price-period {
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+}
+
+/* Botão Ver Turmas */
+.btn-ver-turmas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+  color: var(--color-text-white);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-radius: var(--radius-md);
+  font-weight: var(--font-semibold);
+  font-size: var(--font-size-base);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: var(--spacing-xl);
+  transition: var(--transition-base);
+  box-shadow: 0 4px 15px rgba(220, 20, 60, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ver-turmas::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-ver-turmas:hover::before {
+  left: 100%;
+}
+
+.btn-ver-turmas:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(220, 20, 60, 0.5);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  color: var(--color-text-white);
+  text-decoration: none;
+}
+
+.btn-ver-turmas:active {
+  transform: translateY(-1px);
+}
+
+.btn-ver-turmas i {
+  font-size: var(--font-size-lg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .category-header h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .course-card {
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+
+  .course-name {
+    font-size: var(--font-size-xl);
+  }
+
+  .course-price-value {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .category-header h2 {
+    font-size: var(--font-size-xl);
+  }
+
+  .course-card {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+}
+
