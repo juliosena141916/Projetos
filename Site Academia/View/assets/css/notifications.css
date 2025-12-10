@@ -186,6 +186,10 @@
   animation: scaleOut 0.3s ease forwards;
 }
 
+.fa-exclamation-triangle{
+  color: orange;
+}
+
 .confirm-modal-icon {
   width: 70px;
   height: 70px;
@@ -195,12 +199,12 @@
   justify-content: center;
   margin: 0 auto 25px;
   font-size: 32px;
-  color: #fff;
+  color: #ffffff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .confirm-modal-icon.warning {
-  background: linear-gradient(135deg, #ffc107, #ff9800);
+  background: linear-gradient(135deg, #ffffff, #ffffff);
 }
 
 .confirm-modal-icon.danger {
@@ -269,7 +273,7 @@
 
 .confirm-modal-btn-confirm {
   background: linear-gradient(135deg, #007bff, #0056b3);
-  color: #fff;
+  color: #ffffff;
   border: none;
   box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
 }

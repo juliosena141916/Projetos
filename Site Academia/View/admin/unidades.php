@@ -62,6 +62,9 @@ require_once 'check_admin.php';
         .btn-sm {
             margin: 2px;
         }
+          .mb-3 {
+            width: 25%;
+        }
     </style>
     <link rel="stylesheet" href="../assets/css/notifications.css">
     </head>
@@ -141,6 +144,11 @@ require_once 'check_admin.php';
                     <button class="btn btn-primary mt-2" data-toggle="modal" data-target="#modalNovaUnidade">
                         <i class="fas fa-plus"></i> Nova Unidade
                     </button>
+                </div>
+
+                <!-- Barra de pesquisa -->
+                <div class="mb-3">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Pesquisar por nome...">
                 </div>
 
                 <!-- Mensagens de alerta -->
@@ -271,6 +279,8 @@ require_once 'check_admin.php';
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../assets/js/notifications.js"></script>
     <script>
+        let unidadesData = []; // Armazenar dados das unidades
+
         // Função para carregar unidades
         function carregarUnidades() {
             $.ajax({
@@ -279,28 +289,8 @@ require_once 'check_admin.php';
                 dataType: 'json',
                 success: function(response) {
                     if (response.success) {
-                        let html = '';
-                        response.data.forEach(function(unidade) {
-                            const status = unidade.ativo ? '<span class="badge badge-success">Ativo</span>' : '<span class="badge badge-danger">Inativo</span>';
-                            
-                            html += `<tr>
-                                <td>${unidade.id}</td>
-                                <td>${unidade.nome}</td>
-                                <td>${unidade.cidade}</td>
-                                <td>${unidade.endereco}</td>
-                                <td>${unidade.telefone || '-'}</td>
-                                <td>${status}</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary" onclick="editarUnidade(${unidade.id})">
-                                        <i class="fas fa-edit"></i> Editar
-                                    </button>
-                                    <button class="btn btn-sm btn-danger" onclick="deletarUnidade(${unidade.id})">
-                                        <i class="fas fa-trash"></i> Deletar
-                                    </button>
-                                </td>
-                            </tr>`;
-                        });
-                        $('#unidadesTable').html(html);
+                        unidadesData = response.data; // Armazenar dados
+                        renderizarUnidades(unidadesData);
                     } else {
                         $('#unidadesTable').html('<tr><td colspan="7" class="text-center text-danger">Erro ao carregar unidades</td></tr>');
                     }
@@ -309,6 +299,41 @@ require_once 'check_admin.php';
                     $('#unidadesTable').html('<tr><td colspan="7" class="text-center text-danger">Erro ao conectar ao servidor</td></tr>');
                 }
             });
+        }
+
+        // Função para renderizar unidades na tabela
+        function renderizarUnidades(unidades) {
+            let html = '';
+            unidades.forEach(function(unidade) {
+                const status = unidade.ativo ? '<span class="badge badge-success">Ativo</span>' : '<span class="badge badge-danger">Inativo</span>';
+
+                html += `<tr>
+                    <td>${unidade.id}</td>
+                    <td>${unidade.nome}</td>
+                    <td>${unidade.cidade}</td>
+                    <td>${unidade.endereco}</td>
+                    <td>${unidade.telefone || '-'}</td>
+                    <td>${status}</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary" onclick="editarUnidade(${unidade.id})">
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="btn btn-sm btn-danger" onclick="deletarUnidade(${unidade.id})">
+                            <i class="fas fa-trash"></i> Deletar
+                        </button>
+                    </td>
+                </tr>`;
+            });
+            $('#unidadesTable').html(html);
+        }
+
+        // Função para filtrar unidades
+        function filtrarUnidades() {
+            const searchTerm = $('#searchInput').val().toLowerCase();
+            const filteredUnidades = unidadesData.filter(function(unidade) {
+                return unidade.nome.toLowerCase().includes(searchTerm);
+            });
+            renderizarUnidades(filteredUnidades);
         }
 
         // Função para editar unidade
@@ -411,6 +436,7 @@ require_once 'check_admin.php';
         // Carregar unidades ao abrir a página
         $(document).ready(function() {
             carregarUnidades();
+            $('#searchInput').on('input', filtrarUnidades);
         });
     </script>
 </body>

@@ -456,7 +456,7 @@ try {
             $updates = [];
             $params = [];
             
-            $allowed_fields = ['nome_turma', 'instrutor', 'vagas_totais', 'vagas_disponiveis', 'data_inicio', 
+            $allowed_fields = ['curso_id', 'unidade_id', 'nome_turma', 'instrutor', 'vagas_totais', 'vagas_disponiveis', 'data_inicio',
                               'data_fim', 'dias_semana', 'hora_inicio', 'hora_fim', 'sala_padrao', 'status', 'ativo'];
             
             foreach ($allowed_fields as $field) {

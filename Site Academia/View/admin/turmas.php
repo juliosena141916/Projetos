@@ -42,6 +42,13 @@ require_once 'check_admin.php';
             background-color: #495057;
             color: #fff;
         }
+        .page-header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
         .content {
             margin-left: 250px;
             padding: 20px;

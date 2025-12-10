@@ -74,6 +74,9 @@ require_once 'check_admin.php';
         .benefit-badge.no {
             background-color: #6c757d;
         }
+        .mb-3 {
+            width: 25%;
+        }
     </style>
     <link rel="stylesheet" href="../assets/css/notifications.css">
 </head>
@@ -153,6 +156,11 @@ require_once 'check_admin.php';
             <button class="btn btn-primary mt-2" data-toggle="modal" data-target="#modalNovoPlano">
                 <i class="fas fa-plus"></i> Novo Plano
             </button>
+        </div>
+
+        <!-- Barra de pesquisa -->
+        <div class="mb-3">
+            <input type="text" id="searchInput" class="form-control" placeholder="Pesquisar por nome...">
         </div>
 
         <!-- Mensagens de alerta -->
@@ -469,6 +477,8 @@ require_once 'check_admin.php';
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../assets/js/notifications.js"></script>
     <script>
+        let planosData = []; // Armazenar dados dos planos
+
         // Função para carregar planos
         function carregarPlanos() {
             $.ajax({
@@ -477,7 +487,8 @@ require_once 'check_admin.php';
                 dataType: 'json',
                 success: function(response) {
                     if (response.success) {
-                        renderizarPlanos(response.data);
+                        planosData = response.data; // Armazenar dados
+                        renderizarPlanos(planosData);
                     } else {
                         $('#planosTable').html('<tr><td colspan="6" class="text-center text-danger">Erro ao carregar planos</td></tr>');
                     }
@@ -536,6 +547,20 @@ require_once 'check_admin.php';
             });
             $('#planosTable').html(html);
         }
+
+        // Função para filtrar planos
+        function filtrarPlanos() {
+            const searchTerm = $('#searchInput').val().toLowerCase();
+            const filteredPlanos = planosData.filter(plano =>
+                plano.nome.toLowerCase().includes(searchTerm)
+            );
+            renderizarPlanos(filteredPlanos);
+        }
+
+        // Event listener para o campo de pesquisa
+        $('#searchInput').on('input', function() {
+            filtrarPlanos();
+        });
 
         // Função para mostrar alerta
         function mostrarAlerta(mensagem, tipo) {

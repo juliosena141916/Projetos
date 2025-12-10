@@ -62,6 +62,10 @@ require_once 'check_admin.php';
         .btn-sm {
             margin: 2px;
         }
+
+        .mb-3 {
+            width: 25%;
+        }
     </style>
 </head>
 <body>
@@ -140,6 +144,11 @@ require_once 'check_admin.php';
                     <button class="btn btn-primary mt-2" data-toggle="modal" data-target="#modalNovoUsuario">
                         <i class="fas fa-user-plus"></i> Novo Usuário
                     </button>
+                </div>
+
+                <!-- Barra de pesquisa -->
+                <div class="mb-3">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Pesquisar por nome...">
                 </div>
 
                 <!-- Mensagens de alerta -->
@@ -261,6 +270,8 @@ require_once 'check_admin.php';
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../assets/js/notifications.js"></script>
     <script>
+        let usuariosData = []; // Armazenar dados dos usuários
+
         // Função para carregar usuários
         function carregarUsuarios() {
             $.ajax({
@@ -269,30 +280,8 @@ require_once 'check_admin.php';
                 dataType: 'json',
                 success: function(response) {
                     if (response.success) {
-                        let html = '';
-                        response.data.forEach(function(usuario) {
-                            const status = usuario.ativo ? '<span class="badge badge-success">Ativo</span>' : '<span class="badge badge-danger">Inativo</span>';
-                            const tipo = usuario.tipo_usuario === 'admin' ? '<span class="badge badge-warning">Admin</span>' : '<span class="badge badge-info">Usuário</span>';
-                            const data = new Date(usuario.data_cadastro).toLocaleDateString('pt-BR');
-                            
-                            html += `<tr>
-                                <td>${usuario.id}</td>
-                                <td>${usuario.nome}</td>
-                                <td>${usuario.email}</td>
-                                <td>${tipo}</td>
-                                <td>${status}</td>
-                                <td>${data}</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary" onclick="editarUsuario(${usuario.id})">
-                                        <i class="fas fa-edit"></i> Editar
-                                    </button>
-                                    <button class="btn btn-sm btn-danger" onclick="deletarUsuario(${usuario.id})">
-                                        <i class="fas fa-trash"></i> Deletar
-                                    </button>
-                                </td>
-                            </tr>`;
-                        });
-                        $('#usuariosTable').html(html);
+                        usuariosData = response.data; // Armazenar dados
+                        renderizarUsuarios(usuariosData);
                     } else {
                         $('#usuariosTable').html('<tr><td colspan="7" class="text-center text-danger">Erro ao carregar usuários</td></tr>');
                     }
@@ -302,6 +291,48 @@ require_once 'check_admin.php';
                 }
             });
         }
+
+        // Função para renderizar usuários na tabela
+        function renderizarUsuarios(usuarios) {
+            let html = '';
+            usuarios.forEach(function(usuario) {
+                const status = usuario.ativo ? '<span class="badge badge-success">Ativo</span>' : '<span class="badge badge-danger">Inativo</span>';
+                const tipo = usuario.tipo_usuario === 'admin' ? '<span class="badge badge-warning">Admin</span>' : '<span class="badge badge-info">Usuário</span>';
+                const data = new Date(usuario.data_cadastro).toLocaleDateString('pt-BR');
+
+                html += `<tr>
+                    <td>${usuario.id}</td>
+                    <td>${usuario.nome}</td>
+                    <td>${usuario.email}</td>
+                    <td>${tipo}</td>
+                    <td>${status}</td>
+                    <td>${data}</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary" onclick="editarUsuario(${usuario.id})">
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="btn btn-sm btn-danger" onclick="deletarUsuario(${usuario.id})">
+                            <i class="fas fa-trash"></i> Deletar
+                        </button>
+                    </td>
+                </tr>`;
+            });
+            $('#usuariosTable').html(html);
+        }
+
+        // Função para filtrar usuários
+        function filtrarUsuarios() {
+            const searchTerm = $('#searchInput').val().toLowerCase();
+            const filteredUsuarios = usuariosData.filter(function(usuario) {
+                return usuario.nome.toLowerCase().includes(searchTerm);
+            });
+            renderizarUsuarios(filteredUsuarios);
+        }
+
+        // Event listener para o campo de pesquisa
+        $('#searchInput').on('input', function() {
+            filtrarUsuarios();
+        });
 
         // Função para editar usuário
         function editarUsuario(id) {

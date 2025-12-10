@@ -138,6 +138,8 @@
   backdrop-filter: blur(15px);
   position: relative;
   overflow: hidden;
+  height: 100%;
+  width: 45%;
 }
 
 .turma-card::before {
@@ -145,15 +147,15 @@
   position: absolute;
   top: 0;
   left: -100%;
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
   background: linear-gradient(90deg, transparent, var(--color-primary-alpha), transparent);
   transition: left var(--transition-slow);
   z-index: 0;
 }
 
 .turma-card:hover::before {
-  left: 100%;
+  left: 50%;
 }
 
 .turma-card:hover {
@@ -436,6 +438,7 @@
   letter-spacing: 0.5px;
   font-size: var(--font-size-sm);
   width: 100%;
+  margin-top: 10px;
 }
 
 .btn-outline-info:hover {
@@ -720,3 +723,10 @@
   }
 }
 
+#turmasList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: center;
+}
