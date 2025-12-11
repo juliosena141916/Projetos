@@ -41,11 +41,9 @@ try {
   <title>TechFit - Página Inicial</title>
   <link rel="icon" href="data:,">
   
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/variables.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components.css">
@@ -138,8 +136,7 @@ try {
       animation-delay: 4s;
     }
 
-    /* Sections */
-    .highlights-section,
+    /* Sections Gerais */
     .history-section,
     .features-section,
     .quote-section {
@@ -162,7 +159,44 @@ try {
 
     .section-subtitle {
       font-size: var(--font-size-lg);
-      color: var(--color-text-muted);
+      color: var(--color-text-muted); /* Ajustado para melhor contraste */
+    }
+
+    /* --- HIGHLIGHTS SECTION (ÁREA COM A IMAGEM DE FUNDO) --- */
+    .highlights-section {
+      position: relative;
+      margin-bottom: 80px;
+      /* Imagem de Fundo */
+      background-image: url('imagem.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      
+      padding: 80px 20px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    /* Overlay Escuro para Legibilidade */
+    .highlights-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75); /* Camada escura 75% */
+      z-index: 1;
+    }
+
+    /* Trazer conteúdo para frente do overlay */
+    .highlights-section .section-header,
+    .highlights-section .cards-container {
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* Garantir que o subtítulo fique claro sobre o fundo escuro */
+    .highlights-section .section-subtitle {
+        color: rgba(255, 255, 255, 0.8);
     }
 
     /* Cards Destaque */
@@ -170,6 +204,7 @@ try {
       position: relative;
       transition: all 0.4s ease;
       border: 2px solid var(--color-primary-alpha-2);
+      background-color: rgba(20, 20, 20, 0.85); /* Fundo do card um pouco mais opaco */
     }
 
     .highlight-card:hover {
@@ -199,7 +234,6 @@ try {
       text-overflow: clip;
     }
 
-    /* Badge para textos longos */
     .card-badge.badge-long {
       font-size: 8.5px;
       padding: 6px 14px;
@@ -213,7 +247,6 @@ try {
       right: 8px;
     }
 
-    /* Garantir que o badge não sobreponha o ícone */
     .highlight-card {
       padding-top: 45px;
       position: relative;
@@ -523,7 +556,6 @@ try {
     </div>
   </div>
 
-  <!-- Hero Section -->
   <section class="hero-section">
     <div class="hero-content">
       <h1 class="hero-title">Bem-vindo, <span class="hero-name"><?php echo htmlspecialchars($usuario_nome); ?></span>!</h1>
@@ -537,12 +569,11 @@ try {
     </div>
   </section>
 
-  <!-- Main Content -->
   <div class="container">
-    <!-- Destaques Principais -->
+    
     <section class="highlights-section">
       <div class="section-header">
-        <h2 class="section-title">Explore o TechFit</h2>
+        <h2 class="section-title">Explore a TechFit</h2>
         <p class="section-subtitle">Descubra tudo que temos para oferecer</p>
       </div>
       <div class="cards-container">
@@ -590,7 +621,6 @@ try {
       </div>
     </section>
 
-    <!-- História da Academia -->
     <section class="history-section">
       <div class="history-content">
         <div class="history-text">
@@ -628,7 +658,6 @@ try {
       </div>
     </section>
 
-    <!-- Diferenciais -->
     <section class="features-section">
       <div class="section-header">
         <h2 class="section-title">Por que escolher a TechFit?</h2>
@@ -680,7 +709,6 @@ try {
       </div>
     </section>
 
-    <!-- Frase de Impacto -->
     <section class="quote-section">
       <div class="quote-content">
         <i class="fas fa-quote-left quote-icon"></i>
@@ -690,7 +718,6 @@ try {
     </section>
   </div>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
       <p class="footer-text">
@@ -700,7 +727,6 @@ try {
     </div>
   </footer>
 
-  <!-- JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="assets/js/notifications.js"></script>
   <script src="assets/js/utils.js"></script>
